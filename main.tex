@@ -1,0 +1,286 @@
+% abtex2-modelo-artigo.tex, v-1.9.2 laurocesar
+% Copyright 2012-2014 by abnTeX2 group at http://abntex2.googlecode.com/ 
+%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Artigo Acadêmico em conformidade com
+% ABNT NBR 6022:2003: Informação e documentação - Artigo em publicação 
+% periódica científica impressa - Apresentação
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	article,			% indica que é um artigo acadêmico
+	12pt,				% tamanho da fonte
+	oneside,			% para impressão apenas no verso. Oposto a twoside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	sumario=tradicional,
+	doublespacing
+	]{abntex2}
+
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+		
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+		
+% ---
+\DeclareUnicodeCharacter{1EBD}{\~e}
+% ---
+		
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf,abnt-emphasize=bf]{abntex2cite}	% Citações padrão ABNT
+% ---
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{As potências da alma em Santo Tomás de Aquino}
+\autor{Lucas Dantas Gueiros}
+\local{Brasil}
+\data{10 de dezembro de 2018}
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={As potências da alma em Santo Tomás de Aquino},  % TODO
+		pdfauthor={Lucas Dantas Gueiros}, % TODO
+    	pdfsubject={potências da alma},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={potências}{alma}{tomás}{summa theologiae}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ---
+% Altera as margens padrões
+% ---
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% ---
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+
+%---
+%
+% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
+% e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
+% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+%
+%---
+% página de titulo
+\maketitle
+
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução
+% ----------------------------------------------------------
+\section*{Introdução}
+\addcontentsline{toc}{section}{Introdução}
+
+O presente trabalho é uma leitura da questão 77 da primeira parte da \textit{Summa Theologiae} de Santo Tomás de Aquino, onde são apresentadas algumas questões que dizem respeito às potências da alma do homem\cite{tomas_de_aquino_as_2002}. Dos 8 artigos presentes nessa questão, escolhemos, para esse trabalho, seis deles, excluindo os artigos 2 e  4, por não tratarem dos assuntos sobre os quais pretendemos dissertar. Nesses artigos, Santo Tomás responde às seguintes perguntas:
+\begin{enumerate}
+    \item A essência da alma é sua potência? (a. 1)
+    \item Como as potências da alma se distinguem? (a. 3)
+    \item A alma é sujeito de todas as potências? (a. 5)
+    \item As potências emanam da essência da alma? (a. 6)
+    \item Uma potência procede de outra? (a. 7)
+    \item Todas as potências da alma permanecem nela após a morte? (a. 8)
+\end{enumerate}
+
+As potências da alma são elementos da alma que lhe possibilitam realizar determinadas ações. Estão em potência porque é necessário colocá-las em ato, isto é, realizá-las, para vermos seus efeitos. Mas, diferente de outras coisas que estão em potência, estas são potência ativa, pois não é a capacidade de sofrer mas a capacidade de agir \cite{field_st._1984}. Por exemplo, a potência da madeira de tornar-se mesa é passiva, pois ela precisa sofrer uma ação externa para atualizá-la. Ao contrário, minha capacidade de falar é quem pode causar efeitos externos.
+
+% objetivo geral
+
+Procuraremos enumerar algumas características das potências da alma das quais o doutor se utiliza e, em seguida, prosseguir por uma leitura sequêncial dos seis artigos escolhidos.
+
+\section{Características das potências da alma}
+
+
+
+\subsection{As potências são ordenadas para os atos}
+
+Santo Tomás herda da tradição filosófica a distinção entre ato e potência.
+Ato é aquilo que é efetivamente, e potência aquilo que pode ser.
+Em outras palavras, aquilo que tem capacidade ou potência para ser.
+``A potência, enquanto tal, está ordenada para o ato'' (a. 3, rep).
+Assim, as potências da alma são possibilidades de ação, são aquilo que a alma pode fazer.
+Ao fazer, transforma em ato aquela potência.
+
+\subsection{As potências são acidentes próprio}
+
+É comum entender-se por essência aquilo que é necessário para algo ser o que é, ou seja, aqueles atributos que todo \emph{algo} tem. Por exemplo, todo homem tem alma. Ora, todas as almas humanas tem todas as potẽncias (mesmo que não estejam em ato). Se não fosse assim, parece que as potências da alma seriam acidentais, podendo uma alma tê-las e outra não (a 1, objs. 5 e 7). Entretanto, Santo Tomás chega à conclusão de que as potências não podem ser a essência da alma. Para isso apresenta dos argumentos.
+
+O primeiro argumento (a. 1, rep.) utiliza o fato de que os entes compostos se dividem em ato e potência. Por exemplo, uma pedra é pedra em ato e cubo em potência. Basta que alguém lhe imprima uma forma acidental (a forma de um cubo) para que torne-se uma pedra cúbica. Assim, ela é tanto pedra como cubo, mas uma coisa em ato e outra em potência. Por isso nós podemos dividí-la nessas duas categorias.
+
+Note-se que, nesse exemplo, tanto ser cúbica como poder ser cúbica (sem ser) são coisas acidentais. Ou seja, a potência e o ato são acidentes da pedra, que não deixa de ser pedra (essência) nem por uma coisa nem por outra. Em outras palavras, o ato e a potência se referem ao mesmo gênero (acidente), neste exemplo e em qualquer outro caso.
+% TODO vimos foi?
+Aplicando a questão das potências e da essência da alma\label{potenciasEEssenscia}, já vimos que a alma não precisa exercer suas potências sempre, ou seja, o ato é, claramente, um acidente. Sendo assim, a potẽncia que lhe corresponde só pode ser, também, acidente. Como, entretanto, entender que todos os homens as têm? Isto se dá porque essas potências são causadas pelos ``princípios essenciais'' da alma (a. 2, ad. 5). A isto Santo Tomás chama acidente próprio, e também poderíamos dizer acidente necessário.
+% TODO relacionar com o a. 6
+
+% TODO explicar o conceito de alma para Santo Tomás
+% TODO sujeito da potência só será explicado mais adiante
+% TODO ainda não entendi o que aquilo quer dizer! "termo último da geração"?!
+% TODO não ficou claro o que é ESTAR ORDENADO PARA
+O segundo argumento estabelece dois aspectos para tratar da alma: ela pode ser considerada enquanto forma e enquanto sujeito da potência. Enquanto forma, a alma não está ordenada para outro ato. Ao contrário, enquanto sujeito da potência, a alma está ordenada para um outro ato. Que outro ato é esse? São as ações que suas potências lhe permitem fazer. Por exemplo, enquanto sujeito da capacidade de pensamento, a alma está ordenada para o ato de pensar. Mas enquanto essência do pensante, não está ordenada para outro ato.
+
+Diante disso, pergunta-se o que ocorreria se as potências da alma fossem sua essência. Ora, enquanto a alma é, em essência, alma humana, o homem é sempre homem (pois ela é o ato do corpo). Mas, se assim fosse, por exemplo, em relação ao lembrar (potência da qual a alma é sujeito), ela estaria sempre lembrando. Mas não é de fato assim. Por tanto, a alma enquanto sujeito de uma potência deve ser um ato primeiro ordenado à um ato segundo que não se realiza sempre, mas está em potência 
+
+Assim, as potências podem dar ao sujeito formas acidentais. Por exemplo, a visão pode fazer com que um home veja, e naquele momento ela tem a forma acidental do vidente (na acepção original do termo). Entretanto, essa forma não lhe é dada por outra ser, como no caso da pedra: pois é necessário que alguém corte para que fique cúbica. O homem, entretanto, não precisa de outra coisa se não ele mesmo para ver. É por isso que esse acidente é dito ``próprio e \textit{per se}'' (a.6, rep.). 
+
+%a seção seguinte parece mais continuação
+% conclusão: ele acaba com as oposições clássicas: ato e potência, essência e acidente etc.
+
+\subsection{As potências da alma podem ser ativas ou passivas}
+
+Dizer que uma potência é ativa parece contradizer a clássica oposição entre ato e potência.
+Uma potência passiva é aquela que possibilita ao seu possuidor sofrer uma ação, enquanto uma potência 
+ativa é aquela que possibilita realizar uma ação, que pode ou não gerar efeitos em outra substância.
+
+Mesmo que a alma tenha suas potências sempre, ela não exerce sempre todas elas \cite{field_st._1984}. Por tanto, agir ou não é acidental.
+
+
+% ATOS E POTÊNCIAS (POTÊNCIAS ESTÃO ORDENADAS PARA OS ATOS, COMO SE DIZ EM A. 3)
+% NÃO É A ESSÊNCIA (A. 1)
+% É ACIDENTE PER SE E NÃO POR CAUSA EXTERNA (A. 6)
+%  É POTÊNCIA ATIVA E NÃO PASSIVA (A. 5, A. 3)
+% NEM SEMPRE COM SUJEITO (O COMPOSTO, PORÉM, ESTÁ EM ATO PELA ALMA (A. 6)
+% ESTÁ ORDENADO PARA UM ATO (ART. 3)
+% ESTÁ PARA A ALMA COMO UM PRINCÍPIO ATIVO, UM FIM E COMO PRINCÍPIO RECEPTIVO (A. 7) ?????????
+
+% TODO por quê escolher essas três questões?
+
+
+
+\subsection{A alma enquanto princípio e sujeito das potências}
+% isso é praticamente tudo que eu extraĩ do artigo 5
+
+É chamado de \emph{sujeito de uma potência} aquele que age. Por exemplo, minha alma é o sujeito da ação de pensar. Santo Tomás distingue o sujeito do princípio de uma potência (a. 5, rep). Como já foi dito, o princípio das ações de um ser vivo é sua potência. No caso da ação de pensar, um potência intelectiva, o princípio está no próprio sujeito, ou seja, potência que é princípio está na alma. Mas, nas potências nutritivas e sensitivas, o princípio continua sendo a potência, que está na alma. Já que só é possível que hajam essas ações, como se nutrir e ver, se houver alma. Mas o sujeito não pode ser a alma, pois essas operações se dão por meio de órgãos corporais, como o aparelho digestor e o olhos. Por tanto, nesses casos, o princípio é a alma, mas o sujeito é o composto, ou seja, o corpo e a alma.
+
+% acidente próprio e per se
+
+\section{Leitura do artigo 77}
+
+\subsection{Artigo 1: A essência da alma é sua potência?}
+\label{leitura:a1}
+
+Neste artigo, Santo Tomás se pergunta qual a relação entre a essência e a potência da alma. Como já explicamos acima (\ref{potenciasEEssenscia}), Santo Tomás dirá que a alma é composta por essência e potência, ou ato e potência, pois em sua essência a alma é ato. Entretanto não é, como Deus, ato puro, mas parte de si é potência. O motivo disso nos dá em dois argumentos.
+
+O primeiro argumento já foi acima referido
+
+
+
+% ---
+% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+% ---
+\bookmarksetup{startatroot}% 
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{zotero}
+
+\end{document}
